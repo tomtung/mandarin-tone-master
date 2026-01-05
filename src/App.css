@@ -11,11 +11,16 @@
   --text-color: #333;
 }
 
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+
+
+h1 {
+  color: var(--dark-gray-color);
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 1.2em;
 }
+
 
 #root {
   max-width: 960px;
@@ -24,18 +29,167 @@ body {
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  #root {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+
+  h1 {
+    font-size: 2em; /* Adjust h1 font size for tablets/larger phones */
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .sentence-display {
+    font-size: 2.2em; /* Adjust font size for sentence display */
+  }
+
+  .icon-buttons-container {
+    margin-left: 1em;
+    flex-direction: row !important; /* Force to row for screens up to 768px */
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    padding: 1rem;
+    margin: 0.5rem auto;
+  }
+
+  h1 {
+    font-size: 1.6em; /* Further adjust h1 font size for smaller phones */
+  }
+
+  .container {
+    padding: 1rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* Lighter shadow for smaller screens */
+  }
+
+  .sentence-container {
+    flex-direction: column; /* Stack icons below sentence for very small screens */
+    gap: 0.8em; /* Add some space between sentence and icons */
+  }
+
+  .icon-buttons-container {
+    flex-direction: row !important; /* Arrange icons in a row */
+    margin-left: 0; /* Remove left margin */
+    margin-top: 0.8em; /* Add top margin */
+    gap: 0.5em; /* Reduce gap between icon buttons */
+  }
+
+  .sentence-display {
+    font-size: 1.6em; /* Further adjust font size for smaller phones */
+    padding: 0.4em;
+  }
+
+  .speaker-button,
+  .shuffle-button,
+  .dictionary-button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2em;
+    padding: 0.3em;
+  }
+
+  .start-button,
+  .navigation-buttons button {
+    padding: 0.7em 1.2em;
+    font-size: 1em;
+  }
+
+  .tone-input {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  .tone-input .tone-buttons {
+    gap: 8px;
+  }
+
+  .tone-input .tone-buttons button {
+    width: 45px;
+    height: 45px;
+    font-size: 0.8em;
+    padding: 8px 0;
+  }
+
+  .tone-symbol {
+    font-size: 1.3em;
+  }
+
+  .feedback {
+    font-size: 1.1em;
+    margin-top: 1.5em;
+  }
+}
+
+@media (max-width: 360px) {
+  #root {
+    padding: 0.5rem;
+    margin: 0.2rem auto;
+  }
+
+  h1 {
+    font-size: 1.4em; /* Even smaller h1 for very small screens */
+  }
+
+  .container {
+    padding: 0.8rem;
+  }
+
+  .sentence-display {
+    font-size: 1.4em; /* Even smaller sentence font for very small screens */
+  }
+
+  .icon-buttons-container {
+    flex-direction: row !important; /* Explicitly set to row for very small screens */
+  }
+
+  .speaker-button,
+  .shuffle-button,
+  .dictionary-button {
+    width: 32px;
+    height: 32px;
+    font-size: 1em;
+    padding: 0.2em;
+  }
+
+  .start-button,
+  .navigation-buttons button {
+    padding: 0.6em 1em;
+    font-size: 0.9em;
+  }
+
+  .tone-input .tone-buttons {
+    gap: 5px;
+  }
+
+  .tone-input .tone-buttons button {
+    width: 40px;
+    height: 40px;
+    font-size: 0.7em;
+    padding: 6px 0;
+  }
+
+  .tone-symbol {
+    font-size: 1.1em;
+  }
+
+  .feedback {
+    font-size: 1em;
+    margin-top: 1em;
+  }
+}
+
+
 .container {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   padding: 2rem;
-}
-
-h1 {
-  color: var(--dark-gray-color);
-  font-size: 2.5em;
-  font-weight: 600;
-  margin-bottom: 1.2em;
 }
 
 .sentence-container {
@@ -55,6 +209,8 @@ h1 {
   word-break: break-all; /* Help with long sentences */
   flex-grow: 1;
 }
+
+
 
 .icon-buttons-container {
   display: flex;
