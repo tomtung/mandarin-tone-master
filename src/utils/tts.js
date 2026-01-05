@@ -26,15 +26,19 @@ export const speak = async (text) => {
   if ('speechSynthesis' in window) {
     const voices = await getVoices();
     const utterance = new SpeechSynthesisUtterance(text);
-    const chineseVoice = voices.find(voice => voice.lang === 'zh-CN' && voice.localService);
+    // Prioritize non-local (remote) Chinese voice for quality (starts with 'zh')
+    let chineseVoice = voices.find(voice => voice.lang.startsWith('zh') && !voice.localService);
+    if (!chineseVoice) {
+      // Fallback to any available Chinese voice (local or remote)
+      chineseVoice = voices.find(voice => voice.lang.startsWith('zh'));
+    }
+
     if (chineseVoice) {
       utterance.voice = chineseVoice;
     } else {
-      const fallbackVoice = voices.find(voice => voice.lang === 'zh-CN');
-      if (fallbackVoice) {
-        utterance.voice = fallbackVoice;
-      }
+      console.warn("No Chinese voice found. Falling back to system default.");
+      // For now, let's just log a warning and let the browser use its default behavior.
     }
     window.speechSynthesis.speak(utterance);
   }
-};
+}; // Corrected closing brace
