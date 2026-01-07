@@ -27,15 +27,10 @@ This is a web-based tool designed to help users practice recognizing Mandarin Ch
 3.  **Install Python dependencies (for data generation):**
 
     *   Ensure you have `pdm` installed. If not, refer to the PDM documentation for installation instructions.
-    *   Initialize `pdm` in the project root:
+    *   Install dependencies:
         ```bash
-        pdm init
+        pdm install
         ```
-    *   Install the `pyhanlp` library:
-        ```bash
-        pdm add pyhanlp
-        ```
-    *   **Prerequisite:** HanLP requires a **Java Runtime Environment (JRE)** to be installed on your system. If you don't have Java, please install it (e.g., OpenJDK or Eclipse Temurin).
 
 ## Generating `sentences.json` from `sentences.txt`
 
@@ -46,9 +41,9 @@ To generate or update `sentences.json`:
 1.  **Modify `src/data/sentences.txt`:** Add or modify sentences, one per line.
 2.  **Run the generation script:**
     ```bash
-    pdm run python scripts/generate_sentences_json.py
+    pdm run python scripts/process_sentences.py src/data/sentences.txt src/data/sentences.json
     ```
-    This script will read `sentences.txt`, use HanLP to annotate tones, and create `sentences.json`.
+    This script will read `sentences.txt`, annotate tones using `pypinyin`, and create `sentences.json`.
 
 ## Running the Application
 
